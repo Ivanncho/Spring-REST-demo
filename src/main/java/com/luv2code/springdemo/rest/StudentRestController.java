@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +35,13 @@ public class StudentRestController {
 	public List<Student> getStudents() {
 		
 		return theStudents;		
+	}
+	
+	//define endpoing for /students/{studentId}
+	@GetMapping("/students/{studentId}")
+	public Student getStudent(@PathVariable int studentId) {
+		
+		return theStudents.get(studentId);
 	}
 	
 }
